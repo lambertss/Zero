@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -71,7 +72,6 @@ public class CommController {
             return Result.success(o);
         }
         return Result.fail();
-
     }
 
     @PostMapping("/{domain}/loadOne")
@@ -121,11 +121,6 @@ public class CommController {
     }
 
 
-    @PostMapping("createTable")
-    public Result createTable(@RequestBody Request<Table> request ){
-        return tableService.createTable(request.getData());
-    }
-
     //根据类名全程将request中的对象obj转为BasePojo
     private BasePojo createEntityByClassName(Object obj,String domain) {
         try {
@@ -142,5 +137,6 @@ public class CommController {
         return null;
 
     }
+
 
 }

@@ -9,8 +9,8 @@ import java.util.List;
 @Setter
 public class Table {
     private String tbName;
-    private List<Column> list;
+    private List<Column> columns;
     private String tbComment;
-
+    private String newTbName;
 
 }
