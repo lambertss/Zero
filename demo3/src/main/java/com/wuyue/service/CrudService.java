@@ -49,7 +49,6 @@ public class CrudService<T extends BasePojo> {
         return null;
     }
 
-
     /**
      * 说明： 根据条件增加一批数据
      */
@@ -128,6 +127,10 @@ public class CrudService<T extends BasePojo> {
 
         }
         if (page != null && limit != null) {
+            if(page==0&&limit==0){
+                page=1;
+                limit=15;
+            }
             PageHelper.offsetPage(page * limit, limit);
         }
         return mapper.selectByExample(condition);
