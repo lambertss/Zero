@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="/static/js/jquery/jquery-2.2.3.min.js"></script>
+<script src="js/angularjs/angular.min.js"></script>
+<script src="js/basejs/base.js"></script>
+<script src="js/basejs/baseService.js"></script>
+<script src="js/basejs/baseController.js"></script>
+<script src="js/controller/demo3Controller.js"></script>
+<body>
+     <button id="a" ng-click="addString()">新增一个字符串字段</button>
+     <button id="b" ng-click="addInteger()">新增一个数字字段</button>
+     <button id="c" ng-click="addDate()">新增一个日期字段</button><br/>
+    <table>
+        <tr ng-repeat="a in list">
+
+        </tr>
+    </table>
+</body>
+</html>

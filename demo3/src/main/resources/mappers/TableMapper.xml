@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuyue.mapper.TableMapper" >
+
+    <select id="createTable" parameterType="com.wuyue.pojo.Table" >
+        CREATE  TABLE
+        <if test="tbName!=null and tbName!=''">
+            ${tbName}
+        </if>
+        ( id int primary key auto_increment,
+        <foreach collection="list" item="col" separator=","  index="index">
+          <if test="col.colName!=null and col.colName!=''">
+              ${col.colName}
+              <choose>
+                  <when test="col.type==0">
+                      varchar( ${col.length})
+                  </when>
+                  <when test="col.type==1">
+                      bigint default null
+                  </when>
+                  <when test="col.type==2">
+                      datetime default null
+                  </when>
+              </choose>
+          </if>
+        </foreach>
+        )ENGINE=InnoDB DEFAULT CHARSET=utf8
+        <if test="tbComment!=null and tbComment!=''">
+             Comment=#{tbComment}
+        </if>
+    </select>
+    <select id="queryAllTbName" resultType="string">
+        SELECT table_name FROM information_schema.tables
+
+        WHERE table_schema = 'wuyue'
+
+        AND table_type = 'base table'
+    </select>
+
+</mapper>

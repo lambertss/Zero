@@ -1,0 +1,150 @@
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 13:54:15","userId":"","url":"http://localhost:9999/admin/base/User/update","requestContent":"{\"data\":{\"id\":3,\"username\":\"tianxe\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 13:56:57","userId":"","url":"http://localhost:9999/admin/base/User/load","requestContent":"{\"data\":{\"id\":3},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 13:59:11","userId":"","url":"http://localhost:9999/admin/base/User/loadOneByCondition","requestContent":"{\"data\":{\"id\":3},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 13:59:47","userId":"","url":"http://localhost:9999/admin/base/User/loadOneByCondition","requestContent":"{\"data\":{\"username\":\"tianxe\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 14:00:08","userId":"","url":"http://localhost:9999/admin/base/User/loadOneByCondition","requestContent":"{\"data\":{\"username\":\"tian%\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 14:00:18","userId":"","url":"http://localhost:9999/admin/base/User/loadOneByCondition","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 14:00:55","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 14:07:38","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 14:30:26","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 14:42:07","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:00:35","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:01:14","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:03:12","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:22:00","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:43:51","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:43:51","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:43:51","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:43:51","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:48:30","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"注释\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:54:54","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"注释\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:57:41","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:59:21","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 15:59:31","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:01:00","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:02:36","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:04:54","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:06:13","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:12:36","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:20:03","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:27:07","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:28:58","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:31:29","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:48:40","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:52:21","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"uuu\",\"length\":30,\"type\":0},{\"colName\":\"yyy\",\"comment\":\"年龄\",\"length\":30,\"type\":1},{\"colName\":\"birthday\",\"comment\":\"生日\",\"length\":30,\"type\":2}],\"tbComment\":\"uuyy\",\"tbName\":\"wss\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:55:09","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"ii\",\"length\":30,\"type\":0}],\"tbComment\":\"string\",\"tbName\":\"iio\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 16:56:28","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"ii\",\"length\":30,\"type\":0}],\"tbComment\":\"string\",\"tbName\":\"iio\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:01:14","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"ii\",\"length\":30,\"type\":0}],\"tbComment\":\"string\",\"tbName\":\"iio\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:05:23","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"litiantian\",\"password\":\"123\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:06:14","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"litiantian\",\"password\":\"123\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:07:33","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"litiantian\",\"password\":\"123\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:08:20","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"ii\",\"length\":30,\"type\":0}],\"tbComment\":\"string\",\"tbName\":\"iio\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:10:51","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"ii\",\"length\":30,\"type\":0}],\"tbComment\":\"string\",\"tbName\":\"iio\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:16:21","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"ii\",\"length\":30,\"type\":0}],\"tbComment\":\"string\",\"tbName\":\"iio\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:18:10","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"litiantian\",\"password\":\"123\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:19:18","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"ii\",\"length\":30,\"type\":0}],\"tbComment\":\"string\",\"tbName\":\"iio\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 17:21:17","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"id\":0,\"ids\":[0],\"list\":[{\"colName\":\"ii\",\"length\":30,\"type\":0}],\"tbComment\":\"string\",\"tbName\":\"iio\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 18:12:12","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 18:20:54","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 18:20:54","userId":"","url":"http://localhost:9999/admin/base/User/list","requestContent":"{\"data\":{\"username\":\"tian\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"10.132.11.35","time":"2019-03-22 19:11:09","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"uue\",\"comment\":\"string\",\"length\":0,\"type\":0}],\"tbComment\":\"gg\",\"tbName\":\"gg\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"10.132.11.35","time":"2019-03-22 19:13:09","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"uue\",\"comment\":\"string\",\"length\":0,\"type\":0}],\"tbComment\":\"gg\",\"tbName\":\"gge\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:14:57","userId":"","url":"http://localhost:9999/admin/base/User/deleteByIds","requestContent":"{\"data\":{\"username\":\"uu\",\"password\":\"ii\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:17:12","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":34,\"type\":0},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":1},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":2}],\"tbComment\":\"yy\",\"tbName\":\"rre\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:17:12","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":34,\"type\":0},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":1},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":2}],\"tbComment\":\"yy\",\"tbName\":\"rre\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:17:31","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":34,\"type\":0},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":1},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":2}],\"tbComment\":\"yy\",\"tbName\":\"rre\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:17:31","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":34,\"type\":0},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":1},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":2}],\"tbComment\":\"yy\",\"tbName\":\"rre\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:24:10","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":34,\"type\":0},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":1},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":2}],\"tbComment\":\"yy\",\"tbName\":\"rre\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:25:08","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":34,\"type\":0},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":1},{\"colName\":\"gg2\",\"comment\":\"jj\",\"length\":30,\"type\":2}],\"tbComment\":\"yy\",\"tbName\":\"rre\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:25:08","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":34,\"type\":0},{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":30,\"type\":1},{\"colName\":\"gg2\",\"comment\":\"jj\",\"length\":30,\"type\":2}],\"tbComment\":\"yy\",\"tbName\":\"rre\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:25:34","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":34,\"type\":0},{\"colName\":\"gg3\",\"comment\":\"jj\",\"length\":30,\"type\":1},{\"colName\":\"gg2\",\"comment\":\"jj\",\"length\":30,\"type\":2}],\"tbComment\":\"yy\",\"tbName\":\"rre\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:25:34","userId":"","url":"http://localhost:9999/admin/base/createTable","requestContent":"{\"data\":{\"list\":[{\"colName\":\"gg\",\"comment\":\"jj\",\"length\":34,\"type\":0},{\"colName\":\"gg3\",\"comment\":\"jj\",\"length\":30,\"type\":1},{\"colName\":\"gg2\",\"comment\":\"jj\",\"length\":30,\"type\":2}],\"tbComment\":\"yy\",\"tbName\":\"rre\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:27:06","userId":"","url":"http://localhost:9999/admin/base/User/deleteByIds","requestContent":"{\"data\":{\"username\":\"uu\",\"password\":\"ii\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:28:13","userId":"","url":"http://localhost:9999/admin/base/U/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"uuue\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:28:22","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"uuue\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:28:23","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"uuue\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:29:55","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"uuue\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:29:55","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"uuue\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:32:12","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuueeew\",\"password\":\"yyuu\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:32:12","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuueeew\",\"password\":\"yyuu\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:33:30","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"yyuu\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:33:30","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"yyuu\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:33:46","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"yyuu\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:33:46","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"yyuu\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:34:05","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"yyuu\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-22 22:34:05","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"uuu\",\"password\":\"yyuu\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+

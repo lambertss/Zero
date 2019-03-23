@@ -1,0 +1,2 @@
+{"method":"POST","ip":"0:0:0:0:0:0:0:1","time":"2019-03-23 09:12:39","userId":"","url":"http://localhost:9999/admin/base/User/create","requestContent":"{\"data\":{\"username\":\"rre\",\"password\":\"123\"},\"limit\":0,\"page\":0,\"token\":\"string\"}"},
+
