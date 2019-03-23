@@ -10,7 +10,7 @@
             ${tbName}
         </if>
         ( id int primary key auto_increment,
-        <foreach collection="list" item="col" separator=","  index="index">
+        <foreach collection="columns" item="col" separator=","  index="index">
           <if test="col.colName!=null and col.colName!=''">
               ${col.colName}
               <choose>
@@ -22,6 +22,9 @@
                   </when>
                   <when test="col.type==2">
                       datetime default null
+                  </when>
+                  <when test="col.type==3">
+                      double default null
                   </when>
               </choose>
           </if>
@@ -38,5 +41,28 @@
 
         AND table_type = 'base table'
     </select>
+    <select id="queryAllColName" parameterType="string">
+        select COLUMN_NAME from information_schema.COLUMNS where table_name = #{tbName}
+        and table_schema = 'wuyue';;
+    </select>
+    <select id="dropTBColumn" parameterType="com.wuyue.pojo.Table">
+        alter table
+         <if test="tbName!=null and tbName !=''">
+             ${tbName}
+         </if>
 
+          <foreach collection="columns" item="col" separator="," index="index">
+              drop column ${col.colName}
+          </foreach>
+        ;
+
+    </select>
+
+    <select id="renameTb" parameterType="string">
+
+        rename table ${oldName} to  ${newName}
+    </select>
+    <delete id="dropTb" parameterType="com.wuyue.pojo.Table">
+        drop TABLE ${tbName}
+    </delete>
 </mapper>
