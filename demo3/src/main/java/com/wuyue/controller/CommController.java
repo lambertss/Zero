@@ -3,9 +3,11 @@ package com.wuyue.controller;
 import com.alibaba.fastjson.JSON;
 import com.wuyue.common.Result;
 import com.wuyue.factory.CrudServiceFactory;
+import com.wuyue.mapper.UserMapper;
 import com.wuyue.pojo.BasePojo;
 import com.wuyue.pojo.Request;
 import com.wuyue.pojo.Table;
+import com.wuyue.pojo.User;
 import com.wuyue.service.CrudService;
 import com.wuyue.service.TableService;
 import io.swagger.annotations.ApiOperation;
@@ -119,6 +121,7 @@ public class CommController {
         }
         return Result.fail("删除单条数据失败");
     }
+
 
 
     //根据类名全程将request中的对象obj转为BasePojo
