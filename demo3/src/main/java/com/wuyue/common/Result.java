@@ -16,8 +16,8 @@ public class Result {
 
     private boolean flag;
     private String message;
-    private Object data;
     private Integer total;
+    private Object data;
 
     private static String operateS="操作成功";
     private static String operateF="操作失败";
@@ -27,11 +27,12 @@ public class Result {
         this.data = data;
         if(data instanceof Collection){
             total=((Collection) data).size();
-        }
-        if(data instanceof Map){
+        }else if(data instanceof Map){
             total=((Map) data).size();
+        }else{
+            total=1;
         }
-        total=1;
+
     }
 
     private Result(boolean flag, String message) {
