@@ -3,11 +3,11 @@ package com.wuyue.annotation;
 import java.lang.annotation.*;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD,ElementType.FIELD})
+@Target({ElementType.FIELD})
 @Documented
 public @interface SqlWhere {
 
-    SqlWhereValue value();
+    SqlWhereValue value() default SqlWhereValue.LIKE;
     String proprtityName();
 
     enum SqlWhereValue{

@@ -101,6 +101,9 @@ public class CrudService<T extends BasePojo> {
 
         return null;
     }
+    public List<T> list(T t){
+        return list(t,1,15);
+    }
 
     /**
      * 说明： 加载列表数据前端调用分页

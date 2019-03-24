@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import tk.mybatis.mapper.entity.Example;
 
 import java.lang.reflect.Field;
+import java.util.Date;
 
 /**
  * 说明：动态根据注解生成sql
@@ -19,7 +20,8 @@ public class SqlCriteriaFactory<T extends BasePojo> {
         Field[] fields = t.getClass().getDeclaredFields();
         for (Field field : fields) {
             String key = field.getName();
-            String value = (String) ClassUtil.getFieldValByName(t, key);
+            String value = (String)ClassUtil.getFieldValByName(t, key);
+
             SqlWhere sqlWhere = field.getAnnotation(SqlWhere.class);
             if(value!=null&&sqlWhere!=null){
                 String sqlWhereValue = sqlWhere.value().getValue();

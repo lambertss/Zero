@@ -1,5 +1,6 @@
 package com.wuyue.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wuyue.annotation.SqlWhere;
 import io.swagger.annotations.ApiModel;
@@ -29,6 +30,7 @@ public class User extends BasePojo implements Serializable {
     private String email;
     @ApiModelProperty(value="创建时间")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date created;
     private String sourceType;
     private String name;
@@ -43,5 +45,5 @@ public class User extends BasePojo implements Serializable {
     private Date birthday;
     private Date lastLoginTime;
     private String addressId;
-
+    private String token;
 }

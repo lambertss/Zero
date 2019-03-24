@@ -65,23 +65,23 @@ public class ParamsAspect {
 
 
                 // 判断用户是否登录
-//                if (!Constant.AUTHORID.contains(request.getToken())
+//                if (!Cons.AUTHORID.contains(request.getToken())
 //                        && !url.contains("/wechat/") && !url.contains("/web/public")
-//                        && !redisUtils.exists(request.getToken() + Constant.encryptKey)) {
+//                        && !redisUtils.exists(request.getToken() + Cons.encryptKey)) {
 //                    LogUtil.DebugLog(this, "获得的请求数据是>>>>>>" + jsonString);
-//                    LogUtil.writeSystemAccessFileLog(hsRequest, request, Result.fail(Constant.encryptKey, ResponseEnum.ERROR_CODE_4003.getCode()), urlConfig.getAccesslog(), userId, now);
-//                    return Result.fail(Constant.encryptKey, ResponseEnum.ERROR_CODE_4003.getCode());
+//                    LogUtil.writeSystemAccessFileLog(hsRequest, request, Result.fail(Cons.encryptKey, ResponseEnum.ERROR_CODE_4003.getCode()), urlConfig.getAccesslog(), userId, now);
+//                    return Result.fail(Cons.encryptKey, ResponseEnum.ERROR_CODE_4003.getCode());
 //                } else {
 //                    //更新缓存
-//                    if (redisUtils.exists(request.getToken() + Constant.encryptKey)) {
+//                    if (redisUtils.exists(request.getToken() + Cons.encryptKey)) {
 //                        //续期token
-//                        userId = (String) redisUtils.get(request.getToken() + Constant.encryptKey);
-//                        redisUtils.set(request.getToken() + Constant.encryptKey, userId, loginExpiretime);
+//                        userId = (String) redisUtils.get(request.getToken() + Cons.encryptKey);
+//                        redisUtils.set(request.getToken() + Cons.encryptKey, userId, loginExpiretime);
 //
 //                        //续期权限信息
 //                        String secret = EncrUtil.GetMD5Code(request.getToken());
-//                        User authorsUser = (User) redisUtils.get(secret + Constant.encryptKey);
-//                        redisUtils.set(secret + Constant.encryptKey, authorsUser, loginExpiretime);
+//                        User authorsUser = (User) redisUtils.get(secret + Cons.encryptKey);
+//                        redisUtils.set(secret + Cons.encryptKey, authorsUser, loginExpiretime);
 //                        LogUtil.DebugLog(this, "更新登录状态...延长{}" + loginExpiretime);
 //                    }
 //                }

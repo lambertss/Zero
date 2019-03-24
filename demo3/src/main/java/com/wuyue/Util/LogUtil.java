@@ -121,7 +121,7 @@ public class LogUtil {
     /**
      * 功能描述:获取IP地址
      */
-    private static String getIpAddr(HttpServletRequest request) {
+    public static String getIpAddr(HttpServletRequest request) {
         String ipAddress = null;
         ipAddress = request.getHeader("x-forwarded-for");
         if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
