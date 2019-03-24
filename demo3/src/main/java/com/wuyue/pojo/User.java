@@ -2,6 +2,7 @@ package com.wuyue.pojo;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.wuyue.Util.DateUtil;
 import com.wuyue.annotation.SqlWhere;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -31,10 +32,8 @@ public class User extends BasePojo implements Serializable {
     @ApiModelProperty(value="创建时间")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    private Date created;
     private String sourceType;
     private String name;
-    private String status;
     private String headPic;
     private String qq;
     private Long accountBalance;
@@ -43,7 +42,26 @@ public class User extends BasePojo implements Serializable {
     private Integer points;
     private Integer experienceValue;
     private Date birthday;
-    private Date lastLoginTime;
     private String addressId;
     private String token;
+
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @JSONField(format=DateUtil.DEFAULT_TIME_FORMAT)
+    private Date createTime;
+    private Integer creatorId;
+
+    private String delStatus;
+
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Date lastLoginDate;
+
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @JSONField(format= DateUtil.DEFAULT_TIME_FORMAT)
+    private Date lastUpdateDate;
+    @ApiModelProperty(value="最后操作人id")
+    private String operatorId;
+    @ApiModelProperty(value="最后操作人姓名")
+    private String operator;
+
 }
