@@ -29,7 +29,7 @@ public class TableService{
                     tableMapper.createTable(table);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    LogUtil.DebugLog(LogUtil.class,e.getMessage());
+                    LogUtil.DebugLog(TableService.class,e.getMessage());
                     return Result.fail("插入失败,请检查是否有同名列");
                 }
                 if(queryTbNameExits(name)){
@@ -87,7 +87,7 @@ public class TableService{
                             tableMapper.dropTbColumn(table1);
                             builder.append(column.getColName());
                         } catch (Exception e) {
-                            LogUtil.InfoLog(LogUtil.class,"删除表"+tbName+
+                            LogUtil.InfoLog(TableService.class,"删除表"+tbName+
                                     ":"+column.getColName()+"出现异常,也许是表里本来就没这一列");
                             failBuder.append(column.getColName()+",");
                         }
@@ -116,7 +116,7 @@ public class TableService{
                         try {
                             tableMapper.createTable(table);
                         } catch (Exception e) {
-                            LogUtil.InfoLog(LogUtil.class,"更新创建表"+tbName+"失败");
+                            LogUtil.InfoLog(TableService.class,"更新创建表"+tbName+"失败");
                         }
                     }else{
                         return Result.fail("新表名已经被占用");
@@ -134,13 +134,13 @@ public class TableService{
                 try {
                     tableMapper.renameTb(newName,tbName);
                 } catch (Exception e) {
-                    LogUtil.InfoLog(LogUtil.class,"更新重命名表失败"+tbName);
+                    LogUtil.InfoLog(TableService.class,"更新重命名表失败"+tbName);
                 }
                 try {
                     tableMapper.createTable(table);
                     return Result.success();
                 } catch (Exception e) {
-                    LogUtil.InfoLog(LogUtil.class,"更新表"+tbName+"失败,请检查列名是否重复");
+                    LogUtil.InfoLog(TableService.class,"更新表"+tbName+"失败,请检查列名是否重复");
                     return Result.fail("更新表"+tbName+"失败,请检查列名是否重复");
                 }
             }
@@ -157,9 +157,10 @@ public class TableService{
                          tableMapper.renameTb("del_" + tbName, tbName);
                          return Result.success();
                      } catch (Exception e) {
-                         LogUtil.InfoLog(LogUtil.class, "逻辑删除" + tbName +
-                                 "失败");
+                         LogUtil.InfoLog(TableService.class, "逻辑删除" + tbName +
+                                 ",执行改名失败,也许根本就没这张表");
                      }
+
                  }else {
                      return Result.fail("数据库中并没有这张表,请检查参数是否写错");
                  }
@@ -169,11 +170,4 @@ public class TableService{
 
     }
 
-    public Result renameTbName(Table table) {
-        if(table!=null){
-            String tbName = table.getTbName();
-
-        }
-        return Result.fail();
-    }
 }

@@ -18,22 +18,22 @@ import java.util.concurrent.ExecutorService;
 
 public class LogUtil {
 
-    public static void DebugLog(Object o, String msg) {
+    public synchronized static void DebugLog(Object o, String msg) {
         Logger logger = LoggerFactory.getLogger(o.getClass());
         logger.debug("=============>"+msg);
     }
 
-    public static void InfoLog(Object o, String msg) {
+    public synchronized static void InfoLog(Object o, String msg) {
         Logger logger = LoggerFactory.getLogger(o.getClass());
         logger.info("=============>"+msg);
     }
 
-    public static void ErrorLog(Object o, String msg) {
+    public synchronized static void ErrorLog(Object o, String msg) {
         Logger logger = LoggerFactory.getLogger(o.getClass());
         logger.error("=============>"+msg);
     }
 
-    public static void ErrorLog(Object o, String msg, Request request){
+    public synchronized static void ErrorLog(Object o, String msg, Request request){
     	ErrorLog(o, "=============>"+msg);
 	}
 
@@ -41,7 +41,7 @@ public class LogUtil {
      * 说明： 写入访问日志文件
 	 * @param savePath 访问日志路径
      */
-    public static void writeSystemAccessFileLog(HttpServletRequest request, Object dtoRequest, Object result, String savePath, String inUserId, Date now){
+    public synchronized static void writeSystemAccessFileLog(HttpServletRequest request, Object dtoRequest, Object result, String savePath, String inUserId, Date now){
 
         if(savePath!=null&&savePath.length()==0){
         	LogUtil.ErrorLog(LogUtil.class, "访问日志的保存路径为空");

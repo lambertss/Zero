@@ -25,8 +25,8 @@ public class PublicApi {
     private IPublicApi publicApiService;
 
     @ApiOperation(httpMethod = "GET", value = "判断用户是否登录", notes = "判断用户是否登录")
-    @RequestMapping(value = "/islogin", method = RequestMethod.GET)
-    public Result isLogin(@RequestParam(value="token",required = true) String token) {
+    @GetMapping("islogin")
+    public Result isLogin(@RequestParam("token") String token) {
 
         Boolean exists = redisUtils.exists(token+ Cons.encryptKey);
 
@@ -36,13 +36,13 @@ public class PublicApi {
         return Result.fail();
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
-    public Result login(@RequestBody Request<User> request) throws Exception {
+    @PostMapping("login")
+    public Result login(@RequestBody Request<User> request) {
         return publicApiService.login(request);
     }
 
 
-    @RequestMapping(value = "/getauths", method = RequestMethod.POST)
+    @PostMapping("getauths")
     public Result getAuths(@RequestBody Request<User> request) {
         return publicApiService.getAuths(request);
     }

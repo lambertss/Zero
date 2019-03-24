@@ -1,4 +1,4 @@
-package com.wuyue.pojo.dto;
+package com.wuyue.pojo.vo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

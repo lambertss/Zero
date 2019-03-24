@@ -2,9 +2,13 @@ package com.wuyue.controller;
 
 import com.wuyue.Util.DateUtil;
 import com.wuyue.common.Result;
+import com.wuyue.mapper.UserMapper;
 import com.wuyue.pojo.Request;
 import com.wuyue.pojo.User;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
@@ -12,6 +16,8 @@ import java.util.Date;
 @RestController
 public class UserController {
 
+    @Autowired
+    private UserMapper userMapper;
     @PostMapping("test")
     public Result test(@RequestBody Request<User> request){
         User data = request.getData();
