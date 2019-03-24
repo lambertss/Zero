@@ -55,12 +55,13 @@ public class TableService{
     }
     public boolean queryColNameExits(String tbName,String colName){
         if(tbName!=null&&colName!=null){
-            String[] colNames = tableMapper.queryAllColName(tbName);
-            for (String name : colNames) {
-                if(colName.equals(name)){
+            Map[] colNames = tableMapper.queryAllColName(tbName);
+            for (Map map : colNames) {
+                if(colName.equals(map.get("COLUMN_NAME"))){
                     return true;
                 }
             }
+
         }
         return false;
     }
@@ -168,4 +169,24 @@ public class TableService{
 
     }
 
+    public Result addColumns(Table table) {
+        List<Column> columns = table.getColumns();
+        String tbName = table.getTbName();
+        if(columns!=null&&columns.size()>0&&tbName!=null){
+            List<Column> list=new ArrayList<>();
+            for (Column column : columns) {
+                try {
+                    list.add(column);
+                    table.setColumns(list);
+                    tableMapper.addColumns(table);
+                } catch (Exception e) {
+                    return Result.fail(e.getMessage());
+                }
+            }
+            return Result.success();
+        }
+        return Result.fail();
+
+
+    }
 }

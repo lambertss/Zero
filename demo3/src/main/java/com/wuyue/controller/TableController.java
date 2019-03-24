@@ -26,6 +26,10 @@ public class TableController {
     public Result dropTBColumn(@RequestBody Request<Table> request){
         return tableService.dropTBColumn(request.getData());
     }
+    @PostMapping("addColumns")
+    public Result addColumns(@RequestBody Request<Table> request){
+        return tableService.addColumns(request.getData());
+    }
     @PostMapping("updateTable")
     public Result updateTable(@RequestBody Request<Table> request){
         return tableService.updateTable(request.getData());
