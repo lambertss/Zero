@@ -8,6 +8,7 @@ import com.wuyue.common.Cons;
 import com.wuyue.common.Result;
 import com.wuyue.pojo.Request;
 import com.wuyue.pojo.User;
+import com.wuyue.pojo.config.Configuration;
 import com.wuyue.service.UserService;
 import com.wuyue.service.publicService.IPublicApi;
 import com.wuyue.service.publicService.ISecurity;
@@ -28,6 +29,8 @@ public class PublicApiService implements IPublicApi {
     @Autowired
     private ISecurity securityService;
     @Autowired
+    private ConfigurationService configurationService;
+    @Autowired
     private RedisUtils redisUtils;
     @Autowired
     private UserService userService;
@@ -39,7 +42,7 @@ public class PublicApiService implements IPublicApi {
     @Override
     public Result login(Request<User> request) {
 
-        String loginExpiretimeStr = "60";
+        String loginExpiretimeStr = configurationService.doGetValueByCode(Configuration.LOGIN_EXPIRETIME);
         Integer loginExpiretime = Integer.valueOf(loginExpiretimeStr);
         User user = request.getData();
         if (user == null || EmptyUtil.isEmpty(user.getUsername()) || EmptyUtil.isEmpty(user.getPassword())) {
@@ -48,7 +51,6 @@ public class PublicApiService implements IPublicApi {
         //密码加密
         String encryptPwd = securityService.pwdEncrypt(user.getPassword());
         user.setPassword(encryptPwd);
-        //String netpointId = user.getNetpointId();
 
         List<User> userEntitys = userService.list(user);
         if (userEntitys == null || userEntitys.size() != 1) {

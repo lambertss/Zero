@@ -3,19 +3,14 @@ package com.wuyue.controller;
 import com.alibaba.fastjson.JSON;
 import com.wuyue.common.Result;
 import com.wuyue.factory.CrudServiceFactory;
-import com.wuyue.mapper.UserMapper;
 import com.wuyue.pojo.BasePojo;
 import com.wuyue.pojo.Request;
-import com.wuyue.pojo.Table;
-import com.wuyue.pojo.User;
 import com.wuyue.service.CrudService;
-import com.wuyue.service.TableService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -24,8 +19,7 @@ public class CommController {
 
     @Autowired
     private CrudServiceFactory crudServiceFactory;
-    @Autowired
-    private TableService tableService;
+
     protected String packageD = "";
 
 
@@ -127,19 +121,17 @@ public class CommController {
     //根据类名全程将request中的对象obj转为BasePojo
     private BasePojo createEntityByClassName(Object obj,String domain) {
         try {
-
             Class clazz = Class.forName(packageD+domain);
             if(clazz!=null){
                 String json = JSON.toJSONString(obj);
                 return JSON.parseObject(json, (Type) clazz);
             }
-
         } catch (ClassNotFoundException e) {
 
         }
         return null;
-
     }
+
 
 
 }

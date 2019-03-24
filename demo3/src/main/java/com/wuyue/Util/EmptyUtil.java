@@ -8,13 +8,15 @@ import java.util.Map;
  */
 public class EmptyUtil {
 
-
+    public static boolean isEmpty(Integer integer){
+        return integer==null;
+    }
     public static boolean isEmpty(String str) {
-      return  (str == null || str.trim().equals("")) ;
+      return  str == null || str.trim().equals("") ;
     }
 
-    public static boolean isEmpty(Object[] array) {
-        return  (array == null || array.length < 1) ;
+    public static boolean isEmpty(Object[] objs) {
+        return  (objs == null || objs.length < 1) ;
     }
 
     public static  boolean isEmpty(Collection collection) {
