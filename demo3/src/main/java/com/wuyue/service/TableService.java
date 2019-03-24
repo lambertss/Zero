@@ -112,15 +112,7 @@ public class TableService{
             if(tbName !=null&&tbName.length()>0){
                 String newTbName = table.getNewTbName();
                 if(newTbName!=null&&newTbName.length()>0){
-                    if(!queryTbNameExits(newTbName)){
-                        try {
-                            tableMapper.createTable(table);
-                        } catch (Exception e) {
-                            LogUtil.InfoLog(TableService.class,"更新创建表"+tbName+"失败");
-                        }
-                    }else{
-                        return Result.fail("新表名已经被占用");
-                    }
+                     renameTb(newTbName,tbName);
                 }
                     String newName = "update_" + tbName;
                     String[] names = tableMapper.queryAllTbName();
@@ -152,21 +144,27 @@ public class TableService{
         if(data!=null){
             String tbName = data.getTbName();
             if(tbName!=null) {
-                 if(queryTbNameExits(tbName)){
-                     try {
-                         tableMapper.renameTb("del_" + tbName, tbName);
-                         return Result.success();
-                     } catch (Exception e) {
-                         LogUtil.InfoLog(TableService.class, "逻辑删除" + tbName +
-                                 ",执行改名失败,也许根本就没这张表");
-                     }
-
-                 }else {
-                     return Result.fail("数据库中并没有这张表,请检查参数是否写错");
-                 }
+                return renameTb("del_"+tbName,tbName);
             }
         }
         return Result.fail();
+
+    }
+    public Result renameTb(String newTbName,String oldTbName){
+        if(newTbName!=null&&oldTbName!=null){
+            if(!queryTbNameExits(newTbName)){
+                try {
+                    tableMapper.renameTb(newTbName, oldTbName);
+                    return Result.success();
+                } catch (Exception e) {
+                    return Result.fail("数据库中没有这张旧表,请检查参数是否正确");
+                }
+
+            }
+            return Result.fail("新表名已经被占用");
+
+        }
+        return Result.fail("缺参数");
 
     }
 

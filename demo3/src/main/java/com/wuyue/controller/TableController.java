@@ -32,6 +32,7 @@ public class TableController {
     }
     @PostMapping("renameTbName")
     public Result renameTbName(@RequestBody Request<Table> request){
-        return tableService.updateTable(request.getData());
+        Table table = request.getData();
+        return tableService.renameTb(table.getNewTbName(),table.getTbName());
     }
 }
