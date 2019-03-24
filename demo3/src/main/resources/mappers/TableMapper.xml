@@ -41,9 +41,9 @@
 
         AND table_type = 'base table'
     </select>
-    <select id="queryAllColName" parameterType="string">
+    <select id="queryAllColName" parameterType="string" resultType="map">
         select COLUMN_NAME from information_schema.COLUMNS where table_name = #{tbName}
-        and table_schema = 'wuyue';;
+        and table_schema = 'wuyue';
     </select>
     <select id="dropTBColumn" parameterType="com.wuyue.pojo.Table">
         alter table
@@ -65,4 +65,30 @@
     <delete id="dropTb" parameterType="com.wuyue.pojo.Table">
         drop TABLE ${tbName}
     </delete>
+    <select id="addColumns"  parameterType="com.wuyue.pojo.Table">
+
+        ALTER TABLE ${tbName} add COLUMN
+        <foreach collection="columns" item="col" separator=","  index="index">
+            <if test="col.colName!=null and col.colName!=''">
+                ${col.colName}
+                <choose>
+                    <when test="col.type==0">
+                        varchar( ${col.length})
+                    </when>
+                    <when test="col.type==1">
+                        bigint default null
+                    </when>
+                    <when test="col.type==2">
+                        datetime default null
+                    </when>
+                    <when test="col.type==3">
+                        double default null
+                    </when>
+                </choose>
+            </if>
+        </foreach>
+        <if test="tbComment!=null and tbComment!=''">
+            Comment #{tbComment}
+        </if>
+    </select>
 </mapper>
