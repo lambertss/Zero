@@ -41,4 +41,9 @@ public class TableController {
         Table table = request.getData();
         return tableService.renameTb(table.getNewTbName(),table.getTbName());
     }
+    @PostMapping("renameCol")
+    public Result renameColName(@RequestBody Request<Table> request){
+        return tableService.renameColName(request.getData());
+    }
+
 }

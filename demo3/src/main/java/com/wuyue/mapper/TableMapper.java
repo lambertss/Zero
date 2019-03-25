@@ -18,4 +18,8 @@ public interface TableMapper extends Mapper<Table> {
     void renameTb(@Param("newName")String newName,@Param("oldName")String oldName);
 
     void addColumns(Table table);
+
+    String selectColType(Table table);
+
+    void renameCol(Table table);
 }

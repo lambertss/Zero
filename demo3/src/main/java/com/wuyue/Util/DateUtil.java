@@ -17,8 +17,8 @@ import java.util.Locale;
 public abstract class DateUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(DateUtil.class);  // 日志工具;
     public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";           // 默认日期格式;
-    public static final String DATE_FORMAT_YYYYMMDD = "yyyyMMdd";
-    public static final String DATE_FORMAT_YYMMDD = "yyMMdd";
+    public static final String FORMAT_YYYYMMDD = "yyyyMMdd";
+    public static final String FORMAT_YYMMDD = "yyMMdd";
     public static final String DEFAULT_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";  // 默认时间格式;
 
     // G: Era designator;

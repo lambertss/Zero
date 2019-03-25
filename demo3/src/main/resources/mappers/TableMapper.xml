@@ -32,7 +32,7 @@
                 comment #{col.comment}
             </if>
         </foreach>
-        ,createTime datetime default null COMMENT '创建时间',
+        ,create_time datetime default null COMMENT '创建时间',
         create_id bigint DEFAULT null COMMENT '创建ID' ,
         del_status int DEFAULT NULL COMMENT '删除状态,0为正常,1为删除',
         last_login_date datetime DEFAULT NULL comment '最后登录时间',
@@ -55,7 +55,7 @@
         select COLUMN_NAME from information_schema.COLUMNS where table_name = #{tbName}
         and table_schema = 'wuyue';
     </select>
-    <select id="dropTBColumn" parameterType="com.wuyue.pojo.Table">
+    <select id="dropTbColumn" parameterType="com.wuyue.pojo.Table">
         alter table
          <if test="tbName!=null and tbName !=''">
              ${tbName}
@@ -77,8 +77,9 @@
     </delete>
     <select id="addColumns"  parameterType="com.wuyue.pojo.Table">
 
-        ALTER TABLE ${tbName} add COLUMN
+        ALTER TABLE ${tbName}
         <foreach collection="columns" item="col" separator=","  index="index">
+            add
             <if test="col.colName!=null and col.colName!=''">
                 ${col.colName}
                 <choose>
@@ -86,19 +87,43 @@
                         varchar( ${col.length})
                     </when>
                     <when test="col.type==1">
-                        bigint default null
+                        bigint  null
                     </when>
                     <when test="col.type==2">
-                        datetime default null
+                        datetime  null
                     </when>
                     <when test="col.type==3">
-                        double default null
+                        double  null
                     </when>
                 </choose>
             </if>
+            <if test="col.comment!=null and col.comment!=''">
+               comment #{col.comment}
+            </if>
         </foreach>
-        <if test="tbComment!=null and tbComment!=''">
-            Comment #{tbComment}
-        </if>
+
+    </select>
+    <select id="selectColType" parameterType="com.wuyue.pojo.Table" resultType="string">
+
+        SELECT data_type from information_schema.columns
+ 			where table_name = #{tbName}
+ 			and COLUMN_NAME =
+        <foreach collection="columns" item="col" separator=","  index="index">
+            <if test="col.colName!=null and col.colName!=''">
+                #{col.colName}
+            </if>
+
+        </foreach>
+ 			and table_schema ='wuyue'
+    </select>
+    <select id="renameCol" parameterType="com.wuyue.pojo.Table">
+        ALTER  TABLE  ${tbName} change COLUMN
+            <foreach collection="columns" item="col" separator=","  index="index">
+                <if test="col.colName!=null and col.colName!=''">
+                    ${col.colName}
+                </if>
+                ${col.newName}  ${col.dataType}
+
+            </foreach>
     </select>
 </mapper>

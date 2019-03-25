@@ -12,6 +12,8 @@ public class Column {
     private Integer type =1;
     private String length="30";
     private String comment ;
+    private String newName;
+    private String dataType;
 
 
 

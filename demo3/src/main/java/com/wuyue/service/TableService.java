@@ -1,5 +1,6 @@
 package com.wuyue.service;
 
+import com.wuyue.Util.EmptyUtil;
 import com.wuyue.Util.LogUtil;
 import com.wuyue.common.Result;
 import com.wuyue.mapper.TableMapper;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +56,8 @@ public class TableService{
         if(tbName!=null&&colName!=null){
             Map[] colNames = tableMapper.queryAllColName(tbName);
             for (Map map : colNames) {
-                if(colName.equals(map.get("COLUMN_NAME"))){
+                Object column_name = map.get("COLUMN_NAME");
+                if(colName.equals(column_name)){
                     return true;
                 }
             }
@@ -72,29 +73,32 @@ public class TableService{
 
             if(tbName!=null){
                 if(queryTbNameExits(tbName)){
-                    List<Column> columns1 = table.getColumns();
+                    List<Column> columns = table.getColumns();
                     Map<String,Object> map = new HashMap<>();
 
-                    StringBuilder builder = new StringBuilder("成功删除:");
-                    StringBuilder failBuder = new StringBuilder("失败删除:");
-                    for (Column column : columns1) {
-                        Table table1 = new Table();
-                       table1.setTbName(tbName);
-                        List<Column> list=new ArrayList<>();
-                       list.add(column);
-                       table1.setColumns(list);
-                        try {
-                            tableMapper.dropTbColumn(table1);
-                            builder.append(column.getColName());
-                        } catch (Exception e) {
-                            LogUtil.InfoLog(TableService.class,"删除表"+tbName+
-                                    ":"+column.getColName()+"出现异常,也许是表里本来就没这一列");
-                            failBuder.append(column.getColName()+",");
+                    StringBuilder successStr = new StringBuilder("成功删除:");
+                    StringBuilder failStr = new StringBuilder("失败删除:");
+                    for (int i=0;i<columns.size();i++) {
+                        String colName = columns.get(i).getColName();
+                        if(colName!=null&&colName.length()>0){
+                            if(!queryColNameExits(tbName,colName)){
+                                failStr.append("表中没有"+colName);
+                                columns.remove(i);
+                                i--;
+                            }
+                        }
+
+                    }
+                    if(columns.size()>0){
+                        tableMapper.dropTbColumn(table);
+                        for (Column column : columns) {
+                            successStr.append(column.getColName()+",");
                         }
                     }
-                    map.put("成功删除列:",builder);
-                    map.put("失败删除列:",failBuder);
-                    return Result.success("成功删除的列数是",map);
+
+                    map.put("成功删除列:",successStr);
+                    map.put("失败删除列:",failStr);
+                    return Result.success(map);
 
                 }
                 return Result.fail("数据库中没有这个表");
@@ -159,33 +163,96 @@ public class TableService{
                 } catch (Exception e) {
                     return Result.fail("数据库中没有这张旧表,请检查参数是否正确");
                 }
-
             }
             return Result.fail("新表名已经被占用");
-
         }
         return Result.fail("缺参数");
-
     }
 
     public Result addColumns(Table table) {
         List<Column> columns = table.getColumns();
         String tbName = table.getTbName();
-        if(columns!=null&&columns.size()>0&&tbName!=null){
-            List<Column> list=new ArrayList<>();
-            for (Column column : columns) {
-                try {
-                    list.add(column);
-                    table.setColumns(list);
-                    tableMapper.addColumns(table);
-                } catch (Exception e) {
-                    return Result.fail(e.getMessage());
+        Map<String,Object> map = new HashMap<>();
+        int a =0;
+        if(columns!=null&&columns.size()>0&&tbName!=null) {
+            for (int i = 0; i < columns.size(); i++) {
+                String colName = columns.get(i).getColName();
+                if (queryColNameExits(tbName, colName)) {
+                    columns.remove(i);
+                    i--;
+                    map.put("failMsg"+ a++,"表中已经有"+colName+"这一列");
                 }
             }
-            return Result.success();
+            if(columns.size()>0){
+                tableMapper.addColumns(table);
+                for (int i = 0; i < columns.size(); i++) {
+                    String colName = columns.get(i).getColName();
+                    map.put("successAdd"+i, colName);
+                }
+            }
+            return Result.success(map);
         }
         return Result.fail();
+    }
 
+    public Result renameColName(Table table) {
+        if(table!=null){
+            String tbName = table.getTbName();
+            if(!EmptyUtil.isEmpty(tbName)){
+                if(queryTbNameExits(tbName)){
+                    Column column = table.getColumns().get(0);
+                    if(column!=null){
+                        String colName = column.getColName();
+                        if(!EmptyUtil.isEmpty(colName)){
+                            if(queryColNameExits(tbName,colName)){
+                                Integer type = column.getType();
+                                if(type!=null){
+                                    String length = column.getLength();
 
+                                    if(type==1){
+                                        if(!EmptyUtil.isEmpty(length)){
+                                            column.setDataType(" varchar("+length+") ");
+                                        }else{
+                                            column.setDataType(" varchar(50) ");
+                                        }
+                                    }else if(type==2){
+                                        if(!EmptyUtil.isEmpty(length)){
+                                            column.setDataType(" bigint("+length+") ");
+                                        }else{
+                                            column.setDataType(" bigint(30) ");
+                                        }
+                                    }else if(type==3){
+                                        column.setDataType(" date ");
+                                    }else if(type==4){
+                                        column.setDataType(" double ");
+                                    }
+                                }else {
+                                    String dataType = tableMapper.selectColType(table);
+                                    if ("varchar".equalsIgnoreCase(dataType)) {
+                                        dataType = dataType + "(60)";
+                                    } else if ("int".equalsIgnoreCase(dataType)
+                                            || "bigint".equalsIgnoreCase(dataType)) {
+                                        dataType = dataType + "(50)";
+                                    }
+                                    column.setDataType(dataType);
+
+                                }
+                                try {
+                                    tableMapper.renameCol(table);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    return Result.fail("转换失败,可能是已有的数据无法转变为新类型");
+                                }
+                                return Result.success();
+                            }
+
+                        }
+                    }
+
+                }
+
+            }
+        }
+        return Result.fail();
     }
 }
