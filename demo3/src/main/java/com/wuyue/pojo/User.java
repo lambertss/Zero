@@ -21,7 +21,7 @@ import java.util.Date;
 @ToString
 public class User extends BasePojo implements Serializable {
     @ApiModelProperty(value="昵称")
-    @SqlWhere(value = SqlWhere.SqlWhereValue.LIKE,fieldName = "username")
+    @SqlWhere(value = SqlWhere.SqlWhereValue.LIKE,proprtityName = "username")
     private String username;
     @ApiModelProperty(value="密码")
     private String password;
@@ -44,7 +44,7 @@ public class User extends BasePojo implements Serializable {
     private Date birthday;
     private String addressId;
     private String token;
-    private String lastLoginIp;
+    pri
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @JSONField(format=DateUtil.DEFAULT_TIME_FORMAT)
