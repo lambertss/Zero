@@ -3,8 +3,11 @@ package com.wuyue.pojo;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Table;
+
 @Getter
 @Setter
+@Table(name = "tb_column")
 public class Column {
 
     private String colName;
@@ -14,7 +17,6 @@ public class Column {
     private String comment ;
     private String newName;
     private String dataType;
-
 
 
 }

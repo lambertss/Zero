@@ -49,7 +49,6 @@ public class User extends BasePojo implements Serializable {
     @JSONField(format=DateUtil.DEFAULT_TIME_FORMAT)
     private Date createTime;
     private Integer creatorId;
-
     private Integer delStatus;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
