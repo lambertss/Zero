@@ -21,7 +21,7 @@ import java.util.Date;
 @ToString
 public class User extends BasePojo implements Serializable {
     @ApiModelProperty(value="昵称")
-    @SqlWhere(value = SqlWhere.SqlWhereValue.LIKE,proprtityName = "username")
+    @SqlWhere(value = SqlWhere.SqlWhereValue.LIKE,fieldName = "username")
     private String username;
     @ApiModelProperty(value="密码")
     private String password;

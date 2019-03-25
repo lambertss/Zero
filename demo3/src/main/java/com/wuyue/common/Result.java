@@ -29,8 +29,6 @@ public class Result {
             total=((Collection) data).size();
         }else if(data instanceof Map){
             total=((Map) data).size();
-        }else{
-            total=1;
         }
 
     }

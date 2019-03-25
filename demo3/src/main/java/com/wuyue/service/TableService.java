@@ -255,4 +255,13 @@ public class TableService{
         }
         return Result.fail();
     }
+
+    public Result queryAllColNameByTbName(Table table) {
+        if(table!=null&&!EmptyUtil.isEmpty(table.getTbName())){
+            Map[] maps = tableMapper.queryAllColName(table.getTbName());
+
+            return Result.success(maps);
+        }
+        return Result.fail();
+    }
 }

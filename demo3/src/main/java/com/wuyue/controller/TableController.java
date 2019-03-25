@@ -45,5 +45,10 @@ public class TableController {
     public Result renameColName(@RequestBody Request<Table> request){
         return tableService.renameColName(request.getData());
     }
+    @PostMapping("queryAllColNameByTbName")
+    public Result queryAllColNameByTbName(@RequestBody Request<Table> request){
+
+        return tableService.queryAllColNameByTbName(request.getData());
+    }
 
 }
