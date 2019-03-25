@@ -130,8 +130,6 @@ public class CommController {
         return Result.fail("删除单条数据失败");
     }
 
-
-
     //根据类名全程将request中的对象obj转为BasePojo,不能使用request.getData()获取
     private BasePojo createEntityByClassName(Object obj,String domain) {
         try {

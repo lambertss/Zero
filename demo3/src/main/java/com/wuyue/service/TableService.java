@@ -23,12 +23,11 @@ public class TableService{
 
         String name = table.getTbName();
         if(name!=null){
-            boolean b = queryTbNameExits(name);
-            if (!b) {
+            if (!queryTbNameExits(name)) {
                 try {
                     tableMapper.createTable(table);
                 } catch (Exception e) {
-                    e.printStackTrace();
+
                     LogUtil.DebugLog(TableService.class,e.getMessage());
                     return Result.fail("插入失败,请检查是否有同名列");
                 }

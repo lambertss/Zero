@@ -5,6 +5,7 @@ import com.wuyue.common.Result;
 import com.wuyue.mapper.UserMapper;
 import com.wuyue.pojo.Request;
 import com.wuyue.pojo.User;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import java.util.Date;
 
 
 @RestController
+@Api(value = "user", description = "用户控制器")
 public class UserController {
 
     @Autowired

@@ -44,6 +44,7 @@ public class User extends BasePojo implements Serializable {
     private Date birthday;
     private String addressId;
     private String token;
+    private String lastLoginIp;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @JSONField(format=DateUtil.DEFAULT_TIME_FORMAT)
