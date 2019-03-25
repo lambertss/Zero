@@ -9,7 +9,6 @@ import com.wuyue.annotation.SqlOrderBy;
 import com.wuyue.common.Cons;
 import com.wuyue.factory.MapperFactory;
 import com.wuyue.pojo.BasePojo;
-import com.wuyue.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
@@ -17,7 +16,6 @@ import tk.mybatis.mapper.entity.Condition;
 import tk.mybatis.mapper.entity.Example;
 
 import java.lang.reflect.Field;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -137,7 +135,7 @@ public class CrudService<T extends BasePojo> {
 
         }
         if (page != null && limit != null) {
-            if(page==0&&limit==0){
+            if(page==0||limit==0){
                 page=1;
                 limit=15;
             }
@@ -175,7 +173,7 @@ public class CrudService<T extends BasePojo> {
         List<Integer> ids = t.getIds();
 
         for (Integer id : ids) {
-            ClassUtil.setValue(t,"Id",id);
+            setValue(t,"Id",id);
             int i = mapper.deleteByPrimaryKey(t);
             if(i==1){
                 deleteSum++;
@@ -183,40 +181,10 @@ public class CrudService<T extends BasePojo> {
         }
        return deleteSum;
     }
-    private void recordCreator(Object obj, String token)  {
-
-        Integer userId = (Integer) redisUtils.get(token+ Cons.encryptKey);
-
-        if(userId!=null){
-            User user = new User();
-            user.setId(userId);
-            user.setDelStatus(0);
-            user = userService.loadOne(user);
-            if(user != null){
-                setValue(obj,Cons.CreaterId,userId);
-                setValue(obj,Cons.CreaterName,user.getName());
-                setValue(obj,Cons.CreateTime,new Date());
-            }
-        }
-
-    }
-
-    private void recordOperator(Object obj, String token)  {
-        Integer userId = (Integer) redisUtils.get(token+ Cons.encryptKey);
-
-       if(userId!=null){
-           User user = new User();
-           user.setId(userId);
-           user = userService.loadById(user);
-           setValue(obj,Cons.OperatorId,userId);
-           setValue(obj,Cons.OperateDate,new Date());
-           setValue(obj,Cons.Operator,user.getName());
-       }
-
-    }
 
 
     private static Boolean setValue(Object t,String fieldName,Object o){
+
         return ClassUtil.setValue(t,fieldName,o);
     }
     private Mapper getMapperFromContainer(T t){

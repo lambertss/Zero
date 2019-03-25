@@ -24,7 +24,7 @@ public class UserController {
         if(data!=null){
             System.out.println(data.getName());
             System.out.println(data.getPassword());
-            System.out.println(data.getCreated());
+            System.out.println(data.getCreateTime());
             System.out.println(data.getBirthday());
         }
         Date date1 = DateUtil.parse("2016-08-8 8:00:00", "yyyy-MM-dd HH:mm:ss");
