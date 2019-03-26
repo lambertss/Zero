@@ -7,7 +7,7 @@
      <insert id="createColumns" parameterType="com.wuyue.pojo.Table">
           <foreach collection="columns" item="col" separator=";" index="index">
 
-              INSERT into tb_column set  tbName=#{tbName} ,col_name =#{col.colName}
+              INSERT into tb_column set  tb_name=#{tbName} ,col_name =${col.colName}
               <if test="col.length!=null and col.length!=''">
                   ,col_length=${col.length}
               </if>
