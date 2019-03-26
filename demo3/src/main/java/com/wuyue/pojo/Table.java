@@ -4,21 +4,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Transient;
-import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
-@javax.persistence.Table(name = "tb_config")
+@javax.persistence.Table(name = "tb_user_create")
 public class Table {
 
+    private Integer id;
     private String tbName;
-    private List<Column> columns;
+    private Integer userId;
     private String tbComment;
     @Transient
     private String newTbName;
+    @Transient
+    private List<Column> columns;
 
-    private Date createTime;
-    private Integer creatorId;
 
 }

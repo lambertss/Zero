@@ -10,6 +10,12 @@ app.controller('demo3Controller', function($scope, $controller, baseService) {
         "tbComment": "string",
         "tbName": "string"
     };
+    $scope.addString=function () {
+
+    };
+    $scope.loadTbs=function () {
+        baseService.sendPost("/")
+    }
 
 
 

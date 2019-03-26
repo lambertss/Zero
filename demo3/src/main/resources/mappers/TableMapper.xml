@@ -32,13 +32,6 @@
                 comment #{col.comment}
             </if>
         </foreach>
-        ,create_time datetime default null COMMENT '创建时间',
-        create_id bigint DEFAULT null COMMENT '创建ID' ,
-        del_status int DEFAULT NULL COMMENT '删除状态,0为正常,1为删除',
-        last_login_date datetime DEFAULT NULL comment '最后登录时间',
-        last_update_date datetime DEFAULT NULL comment '最后更新时间',
-        operator_id bigint DEFAULT null comment '操作者ID',
-        operator VARCHAR (30) DEFAULT null comment '操作者名字'
         )ENGINE=InnoDB DEFAULT CHARSET=utf8
         <if test="tbComment!=null and tbComment!=''">
              Comment=#{tbComment}
@@ -126,4 +119,8 @@
 
             </foreach>
     </select>
+    <insert id="recordCreateRecord" parameterType="com.wuyue.pojo.Table" >
+        INSERT  into  tb_user_create VALUE (#{id},#{userId},#{tbName},#{tbComment});
+    </insert>
+
 </mapper>

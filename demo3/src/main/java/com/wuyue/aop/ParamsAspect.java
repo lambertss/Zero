@@ -97,7 +97,8 @@ public class ParamsAspect {
                 if (request.getPage() != null && request.getPage() > 0 && request.getLimit() != null
                         && request.getLimit() <= 0) {
                     LogUtil.writeSystemAccessFileLog(hsRequest, request,
-                            Result.fail("page参数大于0时,limit参数必须大于0"), urlConfig.getAccesslog(), userId, now);
+                            Result.fail("page参数大于0时,limit参数必须大于0"),
+                            urlConfig.getAccesslog(), userId, now);
                     return Result.fail("page参数大于0时,limit参数必须大于0");
                 }
 

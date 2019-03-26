@@ -2,7 +2,6 @@
 app.service('baseService', function($http){
     /** 发送get请求(带请求参数或不带请求参数) */
     this.sendGet = function(url, data){
-
         if (data){
             url = url + "?" + data;
         }

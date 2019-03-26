@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminBaseController extends CommController {
 
     public AdminBaseController() {
-
         packageD = "com.wuyue.pojo.";
     }
 

@@ -89,4 +89,5 @@ public abstract class NumberUtil {
         return Double.valueOf(result).doubleValue();
     }
 
+
 }

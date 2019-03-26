@@ -2,14 +2,18 @@ package com.wuyue.service;
 
 import com.wuyue.Util.EmptyUtil;
 import com.wuyue.Util.LogUtil;
+import com.wuyue.Util.NumberUtil;
 import com.wuyue.common.Result;
+import com.wuyue.mapper.ColumnMapper;
 import com.wuyue.mapper.TableMapper;
 import com.wuyue.pojo.Column;
+import com.wuyue.pojo.Request;
 import com.wuyue.pojo.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,27 +22,38 @@ import java.util.Map;
 public class TableService{
     @Autowired
     private TableMapper tableMapper;
+    @Autowired
+    private ColumnMapper columnMapper;
 
-    public Result createTable(Table table){
 
-        String name = table.getTbName();
-        if(name!=null){
-            if (!queryTbNameExits(name)) {
-                try {
+    @Transactional(rollbackFor = Exception.class)
+    public Result createTable(Request<Table> request){
+        Table table = request.getData();
+        if(table!=null&&!EmptyUtil.isEmpty(table.getTbName())){
+            String name = table.getTbName();
+            if(name!=null){
+                if (!queryTbNameExits(name)) {
+                    String randNum = NumberUtil.getRandNum(6);
+                    table.setId(Integer.valueOf(randNum));
+                    table.setUserId(111);
                     tableMapper.createTable(table);
-                } catch (Exception e) {
 
-                    LogUtil.DebugLog(TableService.class,e.getMessage());
-                    return Result.fail("插入失败,请检查是否有同名列");
+                    int i = tableMapper.recordCreateRecord(table);
+                    if(i==1){
+                        List<Column> columns = table.getColumns();
+                        if(columns!=null&&columns.size()>0){
+                            List<Column> list = typeToDataTypes(columns);
+                            table.setColumns(list);
+                            columnMapper.createColumns(table);
+                        }
+                        return Result.success();
+                    }
+                    return Result.fail("创建表时失败!");
                 }
-                if(queryTbNameExits(name)){
-                    return Result.success();
-                }
+                return Result.fail("数据库中已经存在该表,请替换表名重新尝试");
+
             }
-            return Result.fail("数据库中已经存在该表,请替换表名重新尝试");
-
         }
-
         return Result.fail("缺失表格名参数");
     }
     private boolean queryTbNameExits(String tbName){
@@ -51,6 +66,24 @@ public class TableService{
             }
         }
         return false;
+    }
+    private boolean queryColNameExits(String tbName,String[] strs){
+        if(strs!=null&&strs.length>0){
+            int sum = strs.length;
+            int count=0;
+            Map[] colNames = tableMapper.queryAllColName(tbName);
+            if(colNames!=null&&colNames.length>0){
+                for (Map colName : colNames) {
+                    for (String str : strs) {
+                        if(str.equalsIgnoreCase((String) colName.get("COLUMN_NAME"))){
+                            count++;
+                        }
+                    }
+                }
+            }
+            return sum==count;
+        }
+       return false;
     }
     public boolean queryColNameExits(String tbName,String colName){
         if(tbName!=null&&colName!=null){
@@ -70,7 +103,6 @@ public class TableService{
     public Result dropTBColumn(Table table) {
         if(table!=null){
             String tbName = table.getTbName();
-
             if(tbName!=null){
                 if(queryTbNameExits(tbName)){
                     List<Column> columns = table.getColumns();
@@ -92,10 +124,15 @@ public class TableService{
                     if(columns.size()>0){
                         tableMapper.dropTbColumn(table);
                         for (Column column : columns) {
+                            Column column1 = new Column();
+                            column1.setTbName(table.getTbName());
+                            column1.setColName(column.getColName());
+                            columnMapper.delete(column1);
+                        }
+                        for (Column column : columns) {
                             successStr.append(column.getColName()+",");
                         }
                     }
-
                     map.put("成功删除列:",successStr);
                     map.put("失败删除列:",failStr);
                     return Result.success(map);
@@ -148,7 +185,19 @@ public class TableService{
         if(data!=null){
             String tbName = data.getTbName();
             if(tbName!=null) {
-                return renameTb("del_"+tbName,tbName);
+                Result result = renameTb("del_" + tbName, tbName);
+                Table table = new Table();
+                table.setTbName(tbName);
+                table.setUserId(234);
+                int i = tableMapper.delete(table);
+                if(i==1){
+                    Column column = new Column();
+                    column.setTbName(tbName);
+                    columnMapper.delete(column);
+
+                }
+
+                return result;
             }
         }
         return Result.fail();
@@ -185,6 +234,18 @@ public class TableService{
             }
             if(columns.size()>0){
                 tableMapper.addColumns(table);
+                table.setId(Integer.valueOf(NumberUtil.getRandNum(6)));
+                table.setUserId(111);
+                int i2 = tableMapper.insert(table);
+                if(i2==1){
+                    List<Column> list = table.getColumns();
+                    List<Column> columns1 = typeToDataTypes(list);
+                    for (Column column : columns1) {
+                        column.setTbName(table.getTbName());
+                        columnMapper.insert(column);
+                    }
+
+                }
                 for (int i = 0; i < columns.size(); i++) {
                     String colName = columns.get(i).getColName();
                     map.put("successAdd"+i, colName);
@@ -198,56 +259,36 @@ public class TableService{
     public Result renameColName(Table table) {
         if(table!=null){
             String tbName = table.getTbName();
+
             if(!EmptyUtil.isEmpty(tbName)){
                 if(queryTbNameExits(tbName)){
-                    Column column = table.getColumns().get(0);
-                    if(column!=null){
-                        String colName = column.getColName();
-                        if(!EmptyUtil.isEmpty(colName)){
-                            if(queryColNameExits(tbName,colName)){
-                                Integer type = column.getType();
-                                if(type!=null){
-                                    String length = column.getLength();
-
-                                    if(type==1){
-                                        if(!EmptyUtil.isEmpty(length)){
-                                            column.setDataType(" varchar("+length+") ");
-                                        }else{
-                                            column.setDataType(" varchar(50) ");
-                                        }
-                                    }else if(type==2){
-                                        if(!EmptyUtil.isEmpty(length)){
-                                            column.setDataType(" bigint("+length+") ");
-                                        }else{
-                                            column.setDataType(" bigint(30) ");
-                                        }
-                                    }else if(type==3){
-                                        column.setDataType(" date ");
-                                    }else if(type==4){
-                                        column.setDataType(" double ");
+                    List<Column> columns = table.getColumns();
+                    if(columns!=null){
+                        Column column = columns.get(0);
+                        if(column!=null){
+                            String colName = column.getColName();
+                            if(!EmptyUtil.isEmpty(colName)){
+                                if(queryColNameExits(tbName,colName)){
+                                    Column column1 = new Column();
+                                    column1.setTbName(tbName);
+                                    column1.setColName(colName);
+                                    List<Column> col = columnMapper.select(column1);
+                                    if(col!=null&&col.size()==1){
+                                        String dataType = col.get(0).getDataType();
+                                        column.setDataType(dataType);
+                                        tableMapper.renameCol(table);
                                     }
-                                }else {
-                                    String dataType = tableMapper.selectColType(table);
-                                    if ("varchar".equalsIgnoreCase(dataType)) {
-                                        dataType = dataType + "(60)";
-                                    } else if ("int".equalsIgnoreCase(dataType)
-                                            || "bigint".equalsIgnoreCase(dataType)) {
-                                        dataType = dataType + "(50)";
-                                    }
-                                    column.setDataType(dataType);
+                                    return Result.fail("新增列时没有datatype数据或者datatype插入有误," +
+                                            "请叫管理员修改");
+                                }
+                                return Result.fail("没有这一列");
 
-                                }
-                                try {
-                                    tableMapper.renameCol(table);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                    return Result.fail("转换失败,可能是已有的数据无法转变为新类型");
-                                }
-                                return Result.success();
                             }
-
                         }
+
                     }
+
+
 
                 }
 
@@ -258,10 +299,53 @@ public class TableService{
 
     public Result queryAllColNameByTbName(Table table) {
         if(table!=null&&!EmptyUtil.isEmpty(table.getTbName())){
-            Map[] maps = tableMapper.queryAllColName(table.getTbName());
 
-            return Result.success(maps);
+            List<Column> columns=columnMapper.queryAllColNameByTbName(table);
+            return Result.success(columns);
         }
         return Result.fail();
+    }
+    private List<Column> typeToDataTypes(List<Column> list){
+        List<Column> list2=new ArrayList<>();
+        for (Column column : list) {
+            Column column1 = typeToDataType(column);
+            list2.add(column1);
+        }
+        return list2;
+    }
+    private Column typeToDataType(Column column){
+        Integer type = column.getType();
+        if(type!=null){
+            String length = column.getLength();
+            if(type==1){
+                if(!EmptyUtil.isEmpty(length)){
+                    column.setDataType(" varchar("+length+") ");
+                }else{
+                    column.setDataType(" varchar(50) ");
+                }
+            }else if(type==2){
+                if(!EmptyUtil.isEmpty(length)){
+                    column.setDataType(" bigint("+length+") ");
+                }else{
+                    column.setDataType(" bigint(30) ");
+                }
+            }else if(type==3){
+                column.setDataType(" date ");
+            }else if(type==4){
+                column.setDataType(" double ");
+            }
+        }
+        return column;
+    }
+
+    public Result dropTable(Table table) {
+        if(table!=null){
+            String tbName = table.getTbName();
+            if(!EmptyUtil.isEmpty(tbName)){
+                System.out.println("222");
+            }
+        }
+        return Result.fail();
+
     }
 }

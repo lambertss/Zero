@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<script src="/static/js/jquery/jquery-2.2.3.min.js"></script>
+<script src="jquery/jquery-2.2.3.min.js"></script>
 <script src="js/angularjs/angular.min.js"></script>
 <script src="js/basejs/base.js"></script>
 <script src="js/basejs/baseService.js"></script>
 <script src="js/basejs/baseController.js"></script>
 <script src="js/controller/demo3Controller.js"></script>
-<body>
-     <button id="a" ng-click="addString()">新增一个字符串字段</button>
-     <button id="b" ng-click="addInteger()">新增一个数字字段</button>
-     <button id="c" ng-click="addDate()">新增一个日期字段</button><br/>
-    <table>
-        <tr ng-repeat="a in list">
+<body ng-app="wuyue"
+      ng-controller="demo3Controller" ng-init="loadTbs()">
+
+    当前用户创建过的表:
+    <table >
+        <th >表预览</th>
+        <tr ng-repeat="table in tables">
+
+        </tr>
+    </table>
+            新增一个字符串字段:
+            <input type="text" ng-model="str"
+                 placeholder="列名" />
+     <button id="a" ng-click="addString()">新增</button><br/>
+            新增一个数字字段:
+            <input type="text" ng-model="num"
+                placeholder="列名" />
+     <button id="b" ng-click="addInteger()">新增</button><br/>
+            新增一个日期字段:
+            <input type="text" ng-model="date"
+                placeholder="列名" />
+     <button id="c" ng-click="addDate()">新增</button><br/>
+    <table >
+        <th >表预览</th>
+        <tr ng-repeat="a in collist">
 
         </tr>
     </table>

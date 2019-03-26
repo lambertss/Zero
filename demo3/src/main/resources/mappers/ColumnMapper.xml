@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuyue.mapper.ColumnMapper" >
+
+     <insert id="createColumns" parameterType="com.wuyue.pojo.Table">
+          <foreach collection="columns" item="col" separator=";" index="index">
+
+              INSERT into tb_column set  tbName=#{tbName} ,col_name =#{col.colName}
+              <if test="col.length!=null and col.length!=''">
+                  ,col_length=${col.length}
+              </if>
+              <if test="col.comment!=null and col.comment!=''">
+                  ,col_comment=#{col.comment}
+              </if>
+              <if test="col.dataType!=null and col.dataType!=''">
+                  ,data_type=#{col.dataType}
+              </if>
+;
+          </foreach>
+
+
+     </insert>
+    <select id="queryAllColNameByTbName" parameterType="com.wuyue.pojo.Table" resultType="com.wuyue.pojo.Column">
+
+        SELECT * FROM tb_column
+        <where>
+            <if test="tbName!=null and tbName!=''">
+                tb_name=#{tbName}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

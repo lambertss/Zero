@@ -22,4 +22,7 @@ public interface TableMapper extends Mapper<Table> {
     String selectColType(Table table);
 
     void renameCol(Table table);
+
+    int recordCreateRecord(Table table);
+
 }
